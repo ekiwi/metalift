@@ -1,4 +1,8 @@
+import random
+import sys
+
 from metalift.analysis_new import VariableTracker, analyze
+from metalift.concrete import compile_function, gen_traces
 from metalift.ir import *
 
 from metalift.synthesize_auto import synthesize
@@ -56,6 +60,11 @@ if __name__ == "__main__":
     arg2 = variable_tracker.variable("arg2", Int())
 
     synth_fun = grammar(fnName, [base, arg1, base2, arg2], Var("ret", Int()))
+
+    runnable = compile_function(filename, test_analysis)
+    traces = gen_traces(runnable, test_analysis, random.Random(), count=10)
+    print(traces)
+    #sys.exit(0)
 
     vc = test_analysis.call(base, arg1, base2, arg2)(variable_tracker, lambda ret: Call(
         fnName,
