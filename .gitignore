@@ -3,8 +3,10 @@
 *.pyc
 llvm-pass/build/
 synthesisLogs/
-tests/*.ll
-tests/*.loops
+tests/**/*.ll
+tests/**/*.loops
+tests/**/*.rkt
+tests/**/*.smt
 crdt_tests/*.ll
 crdt_tests/*.loops
 tests/struct1.rkt
@@ -17,3 +19,4 @@ distribution*.png
 dist/
 rosette-packages/
 nixos.qcow2
+/.idea/
